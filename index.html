@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MetroPulse | Real Estate Investment Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">🏙️ MetroPulse</div>
+            <ul>
+                <li><a href="#problem">Problem</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#steps">Methodology</a></li>
+                <li><a href="#tech">Tech Stack</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>MetroPulse</h1>
+            <p>Real Estate Investment & Yield Analytics Dashboard</p>
+            <div class="hero-tags">
+                <span>Python</span> <span>HDBSCAN</span> <span>Power BI</span> <span>Investment Scoring</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="problem" class="container section-padding">
+        <div class="content-card">
+            <h2>🎯 Business Problem</h2>
+            <p>Traditional investment decisions rely on static reports and broker opinions, leading to mispriced assets and poor yield-vs-growth trade-offs. <strong>MetroPulse</strong> systematically identifies micro-markets that offer the best balance between rental income and capital appreciation.</p>
+        </div>
+    </section>
+
+    <section id="demo" class="video-section">
+        <div class="container">
+            <h2 class="section-title">Project Demo & Walkthrough</h2>
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/s93Ii110FV4" 
+                    title="MetroPulse Demo" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="steps" class="container section-padding">
+        <h2 class="section-title">Step-by-Step Implementation</h2>
+
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">01</span>
+                <h3>Synthetic Data & Cleaning</h3>
+            </div>
+            <div class="step-body">
+                <p>Generated realistic economic datasets using noise-injected time-series formulas to simulate gradual price appreciation and infrastructure-driven growth. Cleaned and validated data using Python to ensure high integrity.</p>
+                <div class="code-snippet">
+                    <code># Example: Noise Injection<br>Value(t) = Base_Market_Value + f(Time) + Noise</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">02</span>
+                <h3>Feature Engineering</h3>
+            </div>
+            <div class="step-body">
+                <p>Converted raw prices into investment-relevant features like <strong>Rental Yield %</strong>, <strong>YoY Growth</strong>, and <strong>Liquidity Scores</strong>.</p>
+                
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">03</span>
+                <h3>Investment Scoring & Clustering</h3>
+            </div>
+            <div class="step-body">
+                <p>Developed an <strong>Investment Scoring Framework</strong> combining rule-based logic with <strong>HDBSCAN ML Clustering</strong>. This segment identifies "Balanced," "Yield-Focused," and "Speculative" markets.</p>
+                
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <span class="step-number">04</span>
+                <h3>Backtesting & Validation</h3>
+            </div>
+            <div class="step-body">
+                <p>Validated the model by measuring if high investment scores at time <em>t</em> accurately predicted price appreciation at <em>t + 12 months</em>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section-padding">
+        <div class="content-card">
+            <h2>🧱 Data Architecture</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Dataset Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>property_prices.csv</td>
+                        <td>Time-series property price & rent data</td>
+                    </tr>
+                    <tr>
+                        <td>infrastructure_scores.csv</td>
+                        <td>Infrastructure indicators by market</td>
+                    </tr>
+                    <tr>
+                        <td>master_dataset.csv</td>
+                        <td>Unified analytical dataset</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer id="tech" class="footer">
+        <div class="container">
+            <h2>🛠️ Tech Stack</h2>
+            <p>Python (Pandas, Scikit-learn, HDBSCAN) • Power BI • SQL • Time-series Analysis</p>
+            <hr>
+            <p>&copy; 2026 Abhishek Kumar | Real Estate Analyst & Data Scientist</p>
+        </div>
+    </footer>
+
+</body>
+</html>
