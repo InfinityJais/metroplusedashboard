@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetroPulse | Real Estate Investment Analytics</title>
+    <title>MetroPulse | Real Estate Analytics Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,131 +13,157 @@
         <nav class="container">
             <div class="logo">🏙️ MetroPulse</div>
             <ul>
+                <li><a href="#overview">Overview</a></li>
                 <li><a href="#problem">Problem</a></li>
-                <li><a href="#demo">Demo</a></li>
-                <li><a href="#steps">Methodology</a></li>
-                <li><a href="#tech">Tech Stack</a></li>
+                <li><a href="#data">Data & Logic</a></li>
+                <li><a href="#clustering">Clustering</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>MetroPulse</h1>
-            <p>Real Estate Investment & Yield Analytics Dashboard</p>
-            <div class="hero-tags">
-                <span>Python</span> <span>HDBSCAN</span> <span>Power BI</span> <span>Investment Scoring</span>
+    <main>
+        <section class="hero" id="overview">
+            <div class="container">
+                <h1>MetroPulse</h1>
+                <p class="objective">Build an end-to-end analytics system that tells investors which city micro-markets give the best mix of rental yield and capital appreciation and how confident we are in those signals.</p>
+                <hr class="divider">
+                <p class="intro-text">
+                    Real estate decisions are emotional and noisy. Brokers shout about “hot” localities, spreadsheets contain dozens of uncomparable metrics, and investors struggle to trade off income (rent) vs appreciation (price growth). I built <strong>MetroPulse</strong> to cut through that noise: a transparent pipeline that turns price, rent and infrastructure signals into a ranked, explainable list of micro-markets — plus a Power BI / Streamlit dashboard you can actually use in meetings.
+                </p>
+                <p class="intro-text">Below I explain <strong>what I built</strong>, <strong>why</strong>, <strong>how the data is prepared</strong>, <strong>feature engineering and business logic</strong>, <strong>why clustering matters</strong>, and <strong>what the dashboard explains</strong>.</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="problem" class="container section-padding">
-        <div class="content-card">
-            <h2>🎯 Business Problem</h2>
-            <p>Traditional investment decisions rely on static reports and broker opinions, leading to mispriced assets and poor yield-vs-growth trade-offs. <strong>MetroPulse</strong> systematically identifies micro-markets that offer the best balance between rental income and capital appreciation.</p>
-        </div>
-    </section>
-
-    <section id="demo" class="video-section">
-        <div class="container">
-            <h2 class="section-title">Project Demo & Walkthrough</h2>
-            <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/s93Ii110FV4" 
-                    title="MetroPulse Demo" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
-
-    <section id="steps" class="container section-padding">
-        <h2 class="section-title">Step-by-Step Implementation</h2>
-
-        <div class="step-card">
-            <div class="step-header">
-                <span class="step-number">01</span>
-                <h3>Synthetic Data & Cleaning</h3>
-            </div>
-            <div class="step-body">
-                <p>Generated realistic economic datasets using noise-injected time-series formulas to simulate gradual price appreciation and infrastructure-driven growth. Cleaned and validated data using Python to ensure high integrity.</p>
-                <div class="code-snippet">
-                    <code># Example: Noise Injection<br>Value(t) = Base_Market_Value + f(Time) + Noise</code>
+        <section class="video-section" id="demo">
+            <div class="video-wrapper">
+                <h2 class="section-title">Project Walkthrough</h2>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/s93Ii110FV4" 
+                        title="MetroPulse Dashboard" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="step-card">
-            <div class="step-header">
-                <span class="step-number">02</span>
-                <h3>Feature Engineering</h3>
-            </div>
-            <div class="step-body">
-                <p>Converted raw prices into investment-relevant features like <strong>Rental Yield %</strong>, <strong>YoY Growth</strong>, and <strong>Liquidity Scores</strong>.</p>
-                
-            </div>
-        </div>
-
-        <div class="step-card">
-            <div class="step-header">
-                <span class="step-number">03</span>
-                <h3>Investment Scoring & Clustering</h3>
-            </div>
-            <div class="step-body">
-                <p>Developed an <strong>Investment Scoring Framework</strong> combining rule-based logic with <strong>HDBSCAN ML Clustering</strong>. This segment identifies "Balanced," "Yield-Focused," and "Speculative" markets.</p>
-                
-            </div>
-        </div>
-
-        <div class="step-card">
-            <div class="step-header">
-                <span class="step-number">04</span>
-                <h3>Backtesting & Validation</h3>
-            </div>
-            <div class="step-body">
-                <p>Validated the model by measuring if high investment scores at time <em>t</em> accurately predicted price appreciation at <em>t + 12 months</em>.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container section-padding">
-        <div class="content-card">
-            <h2>🧱 Data Architecture</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Dataset Name</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>property_prices.csv</td>
-                        <td>Time-series property price & rent data</td>
-                    </tr>
-                    <tr>
-                        <td>infrastructure_scores.csv</td>
-                        <td>Infrastructure indicators by market</td>
-                    </tr>
-                    <tr>
-                        <td>master_dataset.csv</td>
-                        <td>Unified analytical dataset</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-
-    <footer id="tech" class="footer">
         <div class="container">
-            <h2>🛠️ Tech Stack</h2>
-            <p>Python (Pandas, Scikit-learn, HDBSCAN) • Power BI • SQL • Time-series Analysis</p>
-            <hr>
-            <p>&copy; 2026 Abhishek Kumar | Real Estate Analyst & Data Scientist</p>
+            
+            <section id="problem" class="content-block">
+                <h2>1. Why this project — the problem and the solution</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>The Problem</h3>
+                        <ul>
+                            <li>Investors must balance two competing goals: cash flow now (rental yield) vs price growth later (capital appreciation).</li>
+                            <li>Lots of markets look good on one metric and poor on another.</li>
+                            <li>Infrastructure, liquidity and volatility matter, but are rarely combined into one decision tool.</li>
+                            <li>Backtesting (did the signal actually predict future growth?) is often skipped.</li>
+                        </ul>
+                    </div>
+                    <div class="card highlight">
+                        <h3>How MetroPulse helps</h3>
+                        <ul>
+                            <li>Merges price, rent, transaction and infrastructure data into a single <strong>master dataset</strong>.</li>
+                            <li>Creates <strong>investment signals</strong> (rental yield, YoY growth, infra momentum, liquidity, volatility).</li>
+                            <li>Produces an <strong>explainable investment score</strong> that trades off yield, growth and risk.</li>
+                            <li>Segments markets with <strong>HDBSCAN</strong> so outliers and transitional markets are not forced into wrong buckets.</li>
+                            <li>Backtests scores vs real future returns and attaches <strong>confidence bands</strong> so you know how reliable each signal is.</li>
+                            <li>Displays all of this via interactive dashboards (Power BI / Streamlit) so non-technical stakeholders can make decisions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="data" class="content-block">
+                <h2>2. Preparing the data — what datasets and what features</h2>
+                <h3>Datasets used</h3>
+                <ul>
+                    <li><strong>property_prices.csv</strong> — monthly price per sqft, rent per sqft, unit size, transaction_count, date, micro_market, property_type</li>
+                    <li><strong>infrastructure_scores.csv</strong> — metro distance, it_park distance, counts of schools/hospitals/malls, infra_score, date, micro_market</li>
+                    <li><strong>market_metadata.csv</strong> — static attributes: market_category (prime/mid/emerging), zone_type (res/mixed), dominant_buyer, risk_category, remarks</li>
+                    <li><strong>(optional)</strong> market_metrics.csv — derived metrics if you want to reuse them, but I prefer recomputing for reproducibility</li>
+                </ul>
+
+                <h3>Core features you should have in the master dataset</h3>
+                <div class="feature-grid">
+                    <div class="feature-item">`avg_price_sqft` (numeric)</div>
+                    <div class="feature-item">`avg_rent_sqft` (numeric)</div>
+                    <div class="feature-item">`rental_yield_pct` = (avg_rent_sqft * unit_size * 12) / (avg_price_sqft * unit_size) * 100</div>
+                    <div class="feature-item">`yoy_price_growth` (percent change vs same month last year)</div>
+                    <div class="feature-item">`infra_score` (composite 0-1) & `infra_momentum`</div>
+                    <div class="feature-item">`liquidity_score` & `price_volatility`</div>
+                </div>
+            </section>
+
+            <section id="logic" class="content-block">
+                <h2>3. Feature engineering and business logic</h2>
+                <h3>Engineering steps (practical)</h3>
+                <ol>
+                    <li><strong>Merge</strong> property prices with infra on `(city, micro_market, date)` and with `market_metadata`.</li>
+                    <li><strong>Compute rental yield</strong> as annual rent / property price.</li>
+                    <li><strong>Compute YoY growth</strong> with `.pct_change(periods=12)`.</li>
+                    <li><strong>Liquidity score</strong>: normalize transaction counts (min–max).</li>
+                    <li><strong>Volatility</strong>: rolling 12-month standard deviation of price.</li>
+                    <li><strong>Infra score & momentum</strong>: based on distances and YoY change.</li>
+                    <li><strong>Backtest label</strong>: `future_12m_growth` computed by shifting forward.</li>
+                </ol>
+
+                <div class="formula-card">
+                    <h3>The Investment Score (Explainable)</h3>
+                    <p>Normalize features to 0–1 to avoid scale bias. Use business weights like:</p>
+                    <div class="formula">
+                        <code>investment_score = 0.30 * yield_norm + 0.30 * growth_norm + 0.20 * infra_norm + 0.10 * liquidity_norm - 0.10 * risk_norm</code>
+                    </div>
+                    <p>Map `risk_category` (Low/Medium/High) to additive penalties. Apply <strong>Cluster Adjustment</strong>: Final score = investment_score × cluster_multiplier.</p>
+                </div>
+            </section>
+
+            <section id="clustering" class="content-block">
+                <h2>4. Why we cluster, how, and which clusters we expect</h2>
+                <p>Clustering reveals natural groups like income-centric or growth-centric. <strong>HDBSCAN</strong> is preferred as it discovers cluster counts automatically and marks noise/outliers.</p>
+                    <div class="card">
+                        <h3>Typical Cluster Labels</h3>
+                        <ul>
+                            <li><strong>Balanced</strong>: high yield + high growth + low volatility</li>
+                            <li><strong>Yield Focused</strong>: higher rental yields, lower growth</li>
+                            <li><strong>High Growth</strong>: strong growth, higher infra momentum</li>
+                            <li><strong>Outlier / Speculative</strong>: inconsistent signals, low liquidity</li>
+                        </ul>
+                    </div>
+            </section>
+
+            <section id="components" class="content-block">
+                <h2>5. Other important components used in the project</h2>
+                <ul>
+                    <li><strong>Validation & backtesting</strong>: Testing how the score at time t correlates with returns at t+12.</li>
+                    <li><strong>Confidence bands</strong>: Built from inverse volatility and liquidity to create High/Medium/Low bands.</li>
+                    <li><strong>Explainability</strong>: SHAP-style explanation to show which features pushed a market into its cluster.</li>
+                    <li><strong>Tools & stack</strong>: Python (Pandas, Scikit-learn, HDBSCAN) and Power BI.</li>
+                </ul>
+            </section>
+
+            <section id="dashboard" class="content-block">
+                <h2>6. The dashboard</h2>
+                <div class="feature-grid">
+                    <div class="feature-item"><strong>KPI Row:</strong> Avg Yield, Growth, Infra, and Final Score at a glance.</div>
+                    <div class="feature-item"><strong>Yield vs Growth:</strong> Scatter plot to find "Balanced" opportunities.</div>
+                    <div class="feature-item"><strong>Risk vs Return:</strong> Identifying high returns with low risk.</div>
+                    <div class="feature-item"><strong>Market Drill-down:</strong> Time series of price and rent momentum.</div>
+                    <div class="feature-item"><strong>Backtest:</strong> Bar chart showing future growth by score quintile.</div>
+                </div>
+            </section>
+
         </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Abhishek Kumar | Aspiring Data Scientist</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
